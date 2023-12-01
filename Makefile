@@ -1,10 +1,12 @@
-# build
+# for CI/CD
 build:
 	pnpm exec tsc
 build-docker:
-	docker build -t passamon-guildfi/todo-backend:latest .
+	docker build -t passamonguildfi/todo-backend:latest .
+push-docker:
+	docker push passamonguildfi/todo-backend:latest
 
-# dev command
+# for Dev
 run-dev: build
 	node dist/server.js	
 run-docker:
