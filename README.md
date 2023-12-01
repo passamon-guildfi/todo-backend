@@ -6,7 +6,7 @@
 ```
 make run-dev
 ```
-### Deployed URL
-- SIT: http://18.141.220.132:8080/
+### Deployed Host
+- SIT: http://18.141.220.132:8080
 - UAT: -
 - PROD: -
