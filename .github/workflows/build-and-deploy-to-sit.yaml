@@ -13,9 +13,9 @@ jobs:
       name: SIT
     steps:
       - name: Use Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: '20.10.0'
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.10.0'
 
       - name: Check out the repo
         uses: actions/checkout@v4
