@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "Condition"
-        if: env.TEST_MODE
+        if: fromJSON(env.TEST_MODE)
         run: |
           echo "Open testmode"
           ls
@@ -30,8 +30,7 @@ jobs:
     name: Send Email to PO
     runs-on: ubuntu-latest
     steps:
-      - name: "Condition"
-        if: env.TEST_MODE
+      - name: "Send email to PO"
         run: |
           echo "Send Email to PO"
 
@@ -39,9 +38,8 @@ jobs:
     needs: [create_test_issue_folder, send_to_po]
     name: Send Email to Dev
     runs-on: ubuntu-latest
+    if: fromJSON(env.TEST_MODE)
     steps:
       - name: "Condition"
-        if: env.TEST_MODE
         run: |
           echo "Send Email to Dev"
-          
