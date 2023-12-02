@@ -1,7 +1,7 @@
 name: notify-po-when-issue-was-create
 on:
-  discussion:
-    types: created
+  issues:
+    types: opened
 
 env:
   TEST_MODE: true
