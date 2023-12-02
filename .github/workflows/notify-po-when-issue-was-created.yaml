@@ -4,7 +4,7 @@ on:
     types: opened
 
 env:
-  TEST_MODE: true
+  TEST_MODE: false
 
 jobs:
   create_test_issue_folder:
