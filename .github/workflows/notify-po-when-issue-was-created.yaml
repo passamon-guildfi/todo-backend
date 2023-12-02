@@ -1,0 +1,25 @@
+name: notify-po-when-issue-was-create
+on:
+  discussion:
+    types: created
+
+env:
+  TEST_MODE: true
+
+jobs:
+  create_test_issue_folder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Create Folder"
+        run: |
+          mkdir testIssue
+          cd testIssue
+
+      - name: "Clone repo"
+        uses: actions/checkout@v4
+
+      - name: "Condition"
+        if: TEST_MODE
+        run: |
+          echo "Open testmode"
+          ls
