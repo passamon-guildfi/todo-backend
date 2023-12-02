@@ -38,8 +38,8 @@ jobs:
     needs: [create_test_issue_folder, send_to_po]
     name: Send Email to Dev
     runs-on: ubuntu-latest
-    if: ${{ fromJSON(env.testMode) }}
     steps:
       - name: "Condition"
+        if: ${{ fromJSON(env.testMode) }}
         run: |
           echo "Send Email to Dev"
