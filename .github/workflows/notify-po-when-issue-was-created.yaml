@@ -4,7 +4,7 @@ on:
     types: opened
 
 env:
-  TEST_MODE: false
+  testMode: false
 
 jobs:
   create_test_issue_folder:
@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "Condition"
-        if: ${{ fromJSON(env.TEST_MODE) }}
+        if: ${{ fromJSON(env.testMode) }}
         run: |
           echo "Open testmode"
           ls
@@ -38,7 +38,7 @@ jobs:
     needs: [create_test_issue_folder, send_to_po]
     name: Send Email to Dev
     runs-on: ubuntu-latest
-    if: ${{ fromJSON(env.TEST_MODE) }}
+    if: ${{ fromJSON(env.testMode) }}
     steps:
       - name: "Condition"
         run: |
