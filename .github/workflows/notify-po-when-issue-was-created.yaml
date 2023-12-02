@@ -8,6 +8,7 @@ env:
 
 jobs:
   create_test_issue_folder:
+    name: Create Test Issue Folder
     runs-on: ubuntu-latest
     steps:
       - name: "Create Folder"
@@ -23,3 +24,24 @@ jobs:
         run: |
           echo "Open testmode"
           ls
+
+  send_to_po:
+    needs: create_test_issue_folder
+    name: Send Email to PO
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Condition"
+        if: env.TEST_MODE
+        run: |
+          echo "Send Email to PO"
+
+  send_to_dev:
+    needs: [create_test_issue_folder, send_to_po]
+    name: Send Email to Dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Condition"
+        if: env.TEST_MODE
+        run: |
+          echo "Send Email to Dev"
+          
