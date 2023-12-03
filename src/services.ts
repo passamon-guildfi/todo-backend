@@ -6,8 +6,6 @@ const service = {
       "getTodoResult",
       { resource: "getTodoResult" },
       () => {
-        datadog.metrics.increment("todo_view_counter");
-
         const span = datadog.tracer.scope().active();
         span.setTag("foo", "bar");
 
@@ -19,7 +17,6 @@ const service = {
           });
         }
 
-        datadog.metrics.close();
         return output;
       }
     );
