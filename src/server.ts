@@ -1,6 +1,14 @@
 import service from "./services";
 
 const tracer = require("./tracer");
+const StatsD = require('hot-shots')
+const client = new StatsD({
+    port: 8125,
+    globalTags: { env: 'development' },
+    errorHandler: function (error) {
+      console.log("Socket errors caught here: ", error);
+    }
+});
 
 const express = require("express");
 const cors = require("cors");
@@ -27,6 +35,7 @@ const logger = createLogger({
 });
 
 app.get("/api/v1/todos", (req, res) => {
+  client.increment('/v1_todos/counter');
   logger.info(`todos is called`);
 
   const todoResultFromService = service.todoResultService();
