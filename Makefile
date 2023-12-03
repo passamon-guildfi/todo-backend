@@ -8,6 +8,6 @@ push-docker:
 
 # for Dev
 run-dev: build
-	node dist/server.js	
+	node dist/endpoints.js	
 run-docker:
 	docker run -p 8080:8080 passamon-guildfi/todo-backend:latest

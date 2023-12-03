@@ -1,21 +1,25 @@
-import tracer from "./tracer";
+import datadog from "./datadog-config";
 
 const service = {
-  todoResultService: () => {
-    return tracer.trace(
-      "todoResultService",
-      { resource: "todoResultService" },
+  getTodoResult: () => {
+    return datadog.tracer.trace(
+      "getTodoResult",
+      { resource: "getTodoResult" },
       () => {
-        const span = tracer.scope().active();
+        datadog.metrics.increment("todo_view_counter");
+
+        const span = datadog.tracer.scope().active();
         span.setTag("foo", "bar");
+
         const output = [];
         for (let i = 0; i < 100; ++i) {
-          span.setTag(`test_${i}`, Math.random());
           output.push({
             todoID: i,
             todoTitle: `Hi ${i}`,
           });
         }
+
+        datadog.metrics.close();
         return output;
       }
     );

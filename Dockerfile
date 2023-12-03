@@ -15,4 +15,4 @@ COPY /dist /usr/src/app
 COPY tsconfig.json /usr/src/app
 
 EXPOSE 8080
-CMD ["node", "server"]
+CMD ["node", "endpoints"]
