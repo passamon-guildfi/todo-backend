@@ -1,0 +1,19 @@
+name: Add Money to User on UAT
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_id:
+        type: string
+        required: true
+      amount:
+        type: number
+        required: true
+
+jobs:
+  add_money_to_user:
+  name: Add money to user
+  runs-on: ubuntu-latest
+  steps:
+    name: Add money
+    run: echo " Add money to ${{inputs.user_id}} ${{inputs.amount}}"
