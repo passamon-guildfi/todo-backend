@@ -15,6 +15,6 @@ jobs:
     name: Add money to user
     runs-on: ubuntu-latest
     steps:
-      name: Add money
-      run: |
-        echo " Add money to ${{inputs.user_id}} ${{inputs.amount}}"
+      - name: Add money
+        run: |
+          echo " Add money to ${{inputs.user_id}} ${{inputs.amount}}"
